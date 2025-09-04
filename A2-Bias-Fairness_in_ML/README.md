@@ -116,10 +116,71 @@ Here is the distribution of **Dropout vs Graduate** across bias-sensitive featur
 
 Before proceeding with defining fariness for our context of problem, lets have a look at its defination
 
-### Fairness
+### Fairness - Defination
 Fairness in predictive modeling refers to the principle that machine learning models should make decisions and predictions without systematically favoring or discriminating against individuals or groups based on sensitive or protected attributes such as gender, race, age, socioeconomic status, or disability. A fair model ensures that people who are similar with respect to the target outcome are treated similarly by the model, regardless of their membership in a particular demographic group.
 
 Fairness means going beyond high accuracy — it requires ensuring that errors and benefits of the model are not disproportionately distributed. For example, a model should not have high recall for one group but very low recall for another.
 
-**Recommended Paper** Pinzón, C., Palamidessi, C., Piantanida, P., & Valencia, F. (2021). On the impossibility of non-trivial accuracy under fairness constraints.
+## Fairness Definition and Metrics
+
+To ensure my model for predicting students' academic success is **fair and equitable**, I will evaluate it using a combination of fairness metrics.  
+My approach will be to first identify potential sources of bias and then measure how well the model performs across different demographic groups.
+
+---
+
+### 1. Statistical Parity
+I will use **statistical parity** as a foundational metric to check for *disparate impact*.  
+This metric assesses whether the model's **positive outcome rate** (predicting academic success) is roughly the same across groups.  
+
+A significant difference would suggest that the model disproportionately affects certain groups, which could indicate systemic bias.  
+
+The **Statistical Parity Ratio** is defined as:
+
+\[
+\text{Ratio} = \frac{P(\hat{Y}=1 \mid A=\text{privileged})}{P(\hat{Y}=1 \mid A=\text{unprivileged})}
+\]
+
+- A ratio close to **1** indicates fairness.  
+- A ratio **below 0.8** is commonly considered a sign of concern.  
+
+---
+
+### 2. Equal Opportunity
+I will also evaluate the model using the **Equal Opportunity** metric.  
+This is particularly important in my task, where a **false negative** (incorrectly predicting a student will drop out) has a high cost.  
+
+By focusing on the **True Positive Rate (Recall)**, this metric will show whether the model is equally effective at identifying successful students across all groups.  
+
+\[
+P(\hat{Y}=1 \mid Y=1, A=a_1) \;=\; P(\hat{Y}=1 \mid Y=1, A=a_2)
+\]
+
+- The goal is to minimize differences in recall across groups.  
+
+---
+
+### 3. Equalized Odds
+Finally, I will use **Equalized Odds** for a more comprehensive fairness check.  
+This metric ensures that the model is not only fair in identifying positive cases (TPR) but also in identifying negative cases (FPR).  
+
+\[
+P(\hat{Y}=1 \mid Y=1, A=a_1) = P(\hat{Y}=1 \mid Y=1, A=a_2)
+\]
+
+\[
+P(\hat{Y}=1 \mid Y=0, A=a_1) = P(\hat{Y}=1 \mid Y=0, A=a_2)
+\]
+
+- This helps prevent systematic misclassification of one group over another.  
+- Achieving perfect Equalized Odds can be challenging and may require **trade-offs with overall accuracy**, which I will document in my analysis.  
+
+---
+
+### ✅ Summary
+- **Statistical Parity** → Checks outcome rates across groups.  
+- **Equal Opportunity** → Focuses on equal recall (TPR).  
+- **Equalized Odds** → Balances both TPR and FPR across groups.  
+
+By combining these fairness metrics, I aim to evaluate my model both in terms of **accuracy** and **equity**, and to document trade-offs where they occur.
+
 
