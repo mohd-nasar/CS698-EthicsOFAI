@@ -58,3 +58,41 @@ The goal is to create models that are not only **accurate** but also **equitable
 | 36     | GDP                                           | Feature | Continuous | Macroeconomic                        | None           |
 | 37     | Target                                       | Target  | Categorical| —                                     | None           |
 
+## Potential Bias in Dataset Features
+So for evaluating only Academic Sucess, Dropout these features can include bias in a way as given in table
+### 1. Demographic Features
+| Feature | Potential Bias Type | Explanation |
+|---------|-------------------|-------------|
+| Gender | Gender bias | Model may favor one gender over another in predicting Dropout/Graduation. |
+| Age at enrollment | Age bias | Older or younger students might be treated differently. |
+| Marital status | Social bias | Married/unmarried students could be unfairly predicted to drop out. |
+| Nationality | Ethnic / nationality bias | Predictions may favor local vs. international students. |
+| Displaced | Socioeconomic bias | Displaced students may have systemic disadvantages. |
+| International | Cultural / regional bias | International students might have different educational patterns affecting predictions. |
+
+### 2. Socioeconomic Features
+| Feature | Potential Bias Type | Explanation |
+|---------|-------------------|-------------|
+| Mother’s qualification | Socioeconomic bias | May favor students with highly educated parents. |
+| Father’s qualification | Socioeconomic bias | Same as above. |
+| Mother’s occupation | Socioeconomic bias | Students from higher occupational classes may be predicted more positively. |
+| Father’s occupation | Socioeconomic bias | Same as above. |
+| Educational special needs | Ability bias | Students with special needs may be unfairly predicted as likely to drop out. |
+| Debtor | Socioeconomic bias | May disadvantage students with unpaid debts. |
+| Tuition fees up to date | Socioeconomic bias | Could reflect wealth, affecting model predictions. |
+
+### 3. Academic Features
+| Feature | Potential Bias Type | Explanation |
+|---------|-------------------|-------------|
+| Previous qualification / grade | Academic performance bias | Could favor students from certain schools or educational systems. |
+
+
+
+### 4. Macroeconomic Features
+| Feature | Potential Bias Type | Explanation |
+|---------|-------------------|-------------|
+| Unemployment rate | Regional / economic bias | Students from regions affected by unemployment may be unfairly predicted as higher risk. |
+| Inflation rate | Regional / economic bias | Regional economic conditions could bias predictions. |
+| GDP | Regional / economic bias | Students from low-GDP regions may face systemic disadvantage. |
+
+Rest of the features are Academics related and is unlikely to include any non Academics biases
