@@ -96,3 +96,9 @@ So for evaluating only Academic Sucess, Dropout these features can include bias 
 | GDP | Regional / economic bias | Students from low-GDP regions may face systemic disadvantage. |
 
 Rest of the features are Academics related and is unlikely to include any non Academics biases
+
+## Bias Analysis Graphs
+
+Here is the distribution of **Dropout vs Graduate** across bias-sensitive features:
+
+![Bias Features Graph](../Assets/bias_features.jpg)
