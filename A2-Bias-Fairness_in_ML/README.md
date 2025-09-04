@@ -275,3 +275,12 @@ Dropped the features having Biases like Gender
 See the tradeoff between fairness and accuracy, recall, f1
 
 **these are two extreme cases shown for this data, there can a suitable fruitful tradeoff!**
+
+## Authors
+#### Mohd Nasar Siddiqui
+contributinn 50%, designing model architecture, feature engineering
+
+#### Kartk
+contribution 50%, estimating bias and evaluating fairness
+
+**<Karitk bhai apne se manage karlnea>**
