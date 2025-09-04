@@ -121,7 +121,7 @@ Fairness in predictive modeling refers to the principle that machine learning mo
 
 Fairness means going beyond high accuracy — it requires ensuring that errors and benefits of the model are not disproportionately distributed. For example, a model should not have high recall for one group but very low recall for another.
 
-## Fairness Definition and Metrics
+## Fairness - Metrics
 
 To ensure my model for predicting students' academic success is **fair and equitable**, I will evaluate it using a combination of fairness metrics.  
 My approach will be to first identify potential sources of bias and then measure how well the model performs across different demographic groups.
@@ -161,3 +161,117 @@ This metric ensures that the model is not only fair in identifying positive case
 
 - This helps prevent systematic misclassification of one group over another.  
 - Achieving perfect Equalized Odds can be challenging and may require **trade-offs with overall accuracy**, which I will document in my analysis.  
+
+## Modelling Architecture
+**<Kartik Bhai Daaldena idha>**
+## Modelling on Biased Dataset
+
+## Cross-Validation Classification Report
+| Class      | Precision | Recall | F1-Score | Support |
+|------------|-----------|--------|----------|---------|
+| Dropout    | 0.91      | 0.84   | 0.87     | 1144    |
+| Graduate   | 0.90      | 0.95   | 0.92     | 1760    |
+| **Accuracy** |           |        | **0.90** | **2904** |
+| **Macro Avg** | **0.91** | **0.89** | **0.90** | **2904** |
+| **Weighted Avg** | **0.90** | **0.90** | **0.90** | **2904** |
+
+---
+
+## Test Set Classification Report
+| Class      | Precision | Recall | F1-Score | Support |
+|------------|-----------|--------|----------|---------|
+| Dropout    | 0.89      | 0.84   | 0.87     | 277     |
+| Graduate   | 0.91      | 0.94   | 0.92     | 449     |
+| **Accuracy** |           |        | **0.90** | **726** |
+| **Macro Avg** | **0.90** | **0.89** | **0.89** | **726** |
+| **Weighted Avg** | **0.90** | **0.90** | **0.90** | **726** |
+
+---
+
+**Test Accuracy:** 0.9008
+
+## 1. Overall Performance
+- **Accuracy**: ~91%  
+- **F1 Score**: ~0.91  
+ **Issue**: Recall imbalance  
+- **Dropout recall**: 0.82  
+- **Graduate recall**: 0.97  
+ The model favors predicting **Graduate** → bias toward majority class.
+
+---
+
+## 2. Fairness Across Protected Groups
+
+### Gender
+- **Demographic Parity Ratio**: **0.67** ⚠️  
+- Women are less likely to be predicted positively.
+
+### Age at Enrollment
+- Many categories with **tiny sample sizes** → unstable.  
+- Several age groups show **0 recall** → underrepresented groups ignored.
+
+### Marital Status, Nationality, Parents’ Education/Occupation
+- **Ratios = 0.0** in some groups ⚠️  
+- Severe bias: model gives **no positive predictions** to some categories.
+
+### Debtor & Tuition Fees
+- Very strong unfairness.  
+- **Unpaid tuition → almost always predicted Dropout**.  
+- **Ratio = 0.05** ⚠️
+
+### Socioeconomic Features (Unemployment, Inflation)
+- Bias exists but **milder** than above.
+
+### Displaced, International, Special Needs
+- Ratios **≥ 0.8** → **Acceptable fairness**.
+
+---
+
+## Lets Mitigate Bias
+Dropped the features having Biases like Gender
+
+**<Karitk bhai likh dena kon se features add kiye>**
+
+* Done **Reweighting** for mitigating class imbalance
+
+### Results
+# Model Fairness & Performance (Fold 1)
+
+## 🎯 Overall Metrics
+- **Accuracy**: 0.69  
+- **Precision**: 0.68  
+- **Recall**: 0.67  
+- **F1 Score**: 0.67  
+
+---
+
+## ⚖️ Statistical Parity by Feature
+
+| Feature                       | Demographic Parity Ratio |
+|-------------------------------|--------------------------|
+| Gender                        | 0.91 |
+| Age at enrollment             | 0.00 ⚠️ |
+| Marital status                | 0.60 |
+| Nationality                   | 0.33 |
+| Displaced                     | 0.78 |
+| International                 | 0.69 |
+| Mother's qualification        | 0.00 ⚠️ |
+| Father's qualification        | 0.00 ⚠️ |
+| Mother's occupation           | 0.00 ⚠️ |
+| Father's occupation           | 0.00 ⚠️ |
+| Educational special needs      | 1.00 ✅ |
+| Debtor                        | 0.83 |
+| Tuition fees up to date       | 0.92 |
+| Previous qualification (grade)| 0.00 ⚠️ |
+| Unemployment rate             | 0.00 ⚠️ |
+| Inflation rate                | 0.00 ⚠️ |
+| GDP                           | 0.00 ⚠️ |
+
+---
+
+✅ = Acceptable fairness  
+⚠️ = Severe unfairness (no positive outcomes for some groups)  
+
+See the tradeoff between fairness and accuracy, recall, f1
+
+**these are two extreme cases shown for this data, there can a suitable fruitful tradeoff!**
