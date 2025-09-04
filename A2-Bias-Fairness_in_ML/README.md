@@ -102,3 +102,14 @@ Rest of the features are Academics related and is unlikely to include any non Ac
 Here is the distribution of **Dropout vs Graduate** across bias-sensitive features:
 
 ![Bias Features Graph](../Assets/bias_feature.jpg)
+
+### Insights
+* **Gender** The data is biased to Femaale Gender for more Dropouts than Graduated, whcih ML model can consider Gender as important for feature for predicting dropout or biased to dropout.
+* **Age** More Graduates to Droput ratio for lower age as age increases Droputs exceeds Graduates
+* **Martial Status** Clearly uneven Graduates Droput proportion, biased for Dropout for marriage persons
+* **Nacionality, International, Educational Special Nees** have very few data points for minority classes thereby supressing it and not giving good prediction for them.
+* **Tution Fee, Debitor** The data is biased towards one class of people for Droput creating imbalance so the model will takes these features for predicting Dropouts creating biases.
+* **GDP, Inflation, Unemployment Rates** I think its Generational Global Universal Problem hence don't have any effect whatsoever neither in making predictions nor biases.
+* **Previous Qualification** More Dropouts for low values
+
+## Defining Fairness
