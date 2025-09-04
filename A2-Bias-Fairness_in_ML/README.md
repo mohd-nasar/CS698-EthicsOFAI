@@ -113,3 +113,13 @@ Here is the distribution of **Dropout vs Graduate** across bias-sensitive featur
 * **Previous Qualification** More Dropouts for low values
 
 ## Defining Fairness
+
+Before proceeding with defining fariness for our context of problem, lets have a look at its defination
+
+### Fairness
+Fairness in predictive modeling refers to the principle that machine learning models should make decisions and predictions without systematically favoring or discriminating against individuals or groups based on sensitive or protected attributes such as gender, race, age, socioeconomic status, or disability. A fair model ensures that people who are similar with respect to the target outcome are treated similarly by the model, regardless of their membership in a particular demographic group.
+
+Fairness means going beyond high accuracy — it requires ensuring that errors and benefits of the model are not disproportionately distributed. For example, a model should not have high recall for one group but very low recall for another.
+
+**Recommended Paper** Pinzón, C., Palamidessi, C., Piantanida, P., & Valencia, F. (2021). On the impossibility of non-trivial accuracy under fairness constraints.
+
