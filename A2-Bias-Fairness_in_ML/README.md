@@ -101,4 +101,4 @@ Rest of the features are Academics related and is unlikely to include any non Ac
 
 Here is the distribution of **Dropout vs Graduate** across bias-sensitive features:
 
-![Bias Features Graph](../Assets/bias_features.jpg)
+![Bias Features Graph](../Assets/bias_feature.jpg)
