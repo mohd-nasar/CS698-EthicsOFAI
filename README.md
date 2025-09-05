@@ -101,7 +101,7 @@ Rest of the features are Academics related and is unlikely to include any non Ac
 
 Here is the distribution of **Dropout vs Graduate** across bias-sensitive features:
 
-![Bias Features Graph](../Assets/bias_feature.jpg)
+![Bias Features Graph](./Assets/bias_feature.jpg)
 
 ### Insights
 * **Gender** The data is biased to Femaale Gender for more Dropouts than Graduated, whcih ML model can consider Gender as important for feature for predicting dropout or biased to dropout.
@@ -277,7 +277,7 @@ This metric ensures that the model is not only fair in identifying positive case
 * Reweighting minority classes
 
 **Correlation Matrix**
-![Model Architecture](../Assets/matrix.png)
+![Model Architecture](./Assets/matrix.png)
 
 
 ### Model Fairness & Performce
