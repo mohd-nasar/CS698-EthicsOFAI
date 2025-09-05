@@ -259,9 +259,6 @@ This metric ensures that the model is not only fair in identifying positive case
 
 ---
 
-✅ = Acceptable fairness  
-⚠️ = Severe unfairness (no positive outcomes for some groups)  
-
 See the tradeoff between fairness and accuracy, recall, f1
 
 **these are two extreme cases shown for this data, there can a suitable fruitful tradeoff!**
