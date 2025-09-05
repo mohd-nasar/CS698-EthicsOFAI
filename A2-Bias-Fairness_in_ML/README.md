@@ -202,37 +202,27 @@ This metric ensures that the model is not only fair in identifying positive case
 
 ## 2. Fairness Across Protected Groups
 
-### Gender
-- **Demographic Parity Ratio**: **0.67** ⚠️  
-- Women are less likely to be predicted positively.
-
-### Age at Enrollment
-- Many categories with **tiny sample sizes** → unstable.  
-- Several age groups show **0 recall** → underrepresented groups ignored.
-
-### Marital Status, Nationality, Parents’ Education/Occupation
-- **Ratios = 0.0** in some groups ⚠️  
-- Severe bias: model gives **no positive predictions** to some categories.
-
-### Debtor & Tuition Fees
-- Very strong unfairness.  
-- **Unpaid tuition → almost always predicted Dropout**.  
-- **Ratio = 0.05** ⚠️
-
-### Socioeconomic Features (Unemployment, Inflation)
-- Bias exists but **milder** than above.
-
-### Displaced, International, Special Needs
-- Ratios **≥ 0.8** → **Acceptable fairness**.
+| Feature                       | Demographic Parity Ratio |
+|-------------------------------|--------------------------|
+| Gender                        | 0.60|
+| Age at enrollment             | 0.00 |
+| Marital status                | 0.00 |
+| Nationality                   | 0.00 |
+| Displaced                     | 0.78 |
+| International                 | 0.85 |
+| Mother's qualification        | 0.00 |
+| Father's qualification        | 0.00 |
+| Mother's occupation           | 0.33 |
+| Father's occupation           | 0.23 |
+| Educational special needs     | 0.78 |
+| Debtor                        | 0.36 |
+| Tuition fees up to date       | 0.04 |
+| Previous qualification (grade)| 0.00 |
+| Unemployment rate             | 0.62 |
+| Inflation rate                | 0.62 |
+| GDP                           | 0.62 |
 
 ---
-
-## Lets Mitigate Bias
-Dropped the features having Biases like Gender
-
-**<Karitk bhai likh dena kon se features add kiye>**
-
-* Done **Reweighting** for mitigating class imbalance
 
 ### Results
 # Model Fairness & Performance (Fold 1)
@@ -250,22 +240,22 @@ Dropped the features having Biases like Gender
 | Feature                       | Demographic Parity Ratio |
 |-------------------------------|--------------------------|
 | Gender                        | 0.91 |
-| Age at enrollment             | 0.00 ⚠️ |
+| Age at enrollment             | 0.00 |
 | Marital status                | 0.60 |
 | Nationality                   | 0.33 |
 | Displaced                     | 0.78 |
 | International                 | 0.69 |
-| Mother's qualification        | 0.00 ⚠️ |
-| Father's qualification        | 0.00 ⚠️ |
-| Mother's occupation           | 0.00 ⚠️ |
-| Father's occupation           | 0.00 ⚠️ |
-| Educational special needs      | 1.00 ✅ |
+| Mother's qualification        | 0.00 |
+| Father's qualification        | 0.00 |
+| Mother's occupation           | 0.00 |
+| Father's occupation           | 0.00 |
+| Educational special needs      | 1.00 |
 | Debtor                        | 0.83 |
 | Tuition fees up to date       | 0.92 |
-| Previous qualification (grade)| 0.00 ⚠️ |
-| Unemployment rate             | 0.00 ⚠️ |
-| Inflation rate                | 0.00 ⚠️ |
-| GDP                           | 0.00 ⚠️ |
+| Previous qualification (grade)| 0.00 |
+| Unemployment rate             | 0.00 |
+| Inflation rate                | 0.00 |
+| GDP                           | 0.00 |
 
 ---
 
