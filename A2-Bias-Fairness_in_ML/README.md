@@ -163,7 +163,6 @@ This metric ensures that the model is not only fair in identifying positive case
 - Achieving perfect Equalized Odds can be challenging and may require **trade-offs with overall accuracy**, which I will document in my analysis.  
 
 ## Modelling Architecture
-**<Kartik Bhai Daaldena idha>**
 ## Modelling on Biased Dataset
 
 ## Cross-Validation Classification Report
@@ -239,23 +238,23 @@ This metric ensures that the model is not only fair in identifying positive case
 
 | Feature                       | Demographic Parity Ratio |
 |-------------------------------|--------------------------|
-| Gender                        | 0.91 |
+| Gender                        | 0.70 |
 | Age at enrollment             | 0.00 |
-| Marital status                | 0.60 |
-| Nationality                   | 0.33 |
-| Displaced                     | 0.78 |
-| International                 | 0.69 |
+| Marital status                | 0.00 |
+| Nationality                   | 0.00 |
+| Displaced                     | 0.85 |
+| International                 | 0.81 |
 | Mother's qualification        | 0.00 |
 | Father's qualification        | 0.00 |
 | Mother's occupation           | 0.00 |
 | Father's occupation           | 0.00 |
-| Educational special needs      | 1.00 |
-| Debtor                        | 0.83 |
-| Tuition fees up to date       | 0.92 |
+| Educational special needs     | 0.76 |
+| Debtor                        | 0.49 |
+| Tuition fees up to date       | 0.33 |
 | Previous qualification (grade)| 0.00 |
-| Unemployment rate             | 0.00 |
-| Inflation rate                | 0.00 |
-| GDP                           | 0.00 |
+| Unemployment rate             | 0.69 |
+| Inflation rate                | 0.69 |
+| GDP                           | 0.69 |
 
 ---
 
@@ -270,4 +269,3 @@ contributinn 50%, designing model architecture, feature engineering
 #### Kartk
 contribution 50%, estimating bias and evaluating fairness
 
-**<Karitk bhai apne se manage karlnea>**
