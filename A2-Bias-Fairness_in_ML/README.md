@@ -163,6 +163,55 @@ This metric ensures that the model is not only fair in identifying positive case
 - Achieving perfect Equalized Odds can be challenging and may require **trade-offs with overall accuracy**, which I will document in my analysis.  
 
 ## Modelling Architecture
+### 1. **Data Preparation**
+- Load dataset into a Pandas DataFrame.  
+- Filter only `"Dropout"` and `"Graduate"` students.  
+- Encode target labels:  
+  - `0` = Dropout  
+  - `1` = Graduate  
+- Preserve **protected attributes** for fairness evaluation, such as:  
+  - Gender, Age at enrollment, Nationality, Marital Status, Parents’ qualifications & occupations, Educational special needs, Debtor, Tuition fees up to date, Unemployment rate, Inflation rate, GDP, etc.  
+
+---
+
+### 2. **Feature Engineering & Scaling**
+- Standardize features using **StandardScaler**.  
+- Target labels remain binary (0/1).  
+
+---
+
+### 3. **Model Training**
+- **Cross-validation:**  
+  - 5-fold **K-Fold Stratified CV** to maintain balanced class distributions.  
+- **Model:**  
+  - **XGBoost Classifier (XGBClassifier)**  
+  - Parameters:  
+    - `objective="binary:logistic"`  
+    - `eval_metric="logloss"`  
+    - `random_state=42`  
+
+- For each fold:  
+  - Compute **Performance Metrics**: Accuracy, F1 Score, Classification Report.  
+  - Compute **Fairness Metrics** per protected group.  
+
+---
+
+### 4. **Fairness Assessment**
+- Done using **Fairlearn’s MetricFrame** and `demographic_parity_ratio`.  
+- Metrics reported:  
+  - Group-wise Accuracy  
+  - Group-wise F1 Score  
+  - **Demographic Parity Ratio (DPR)**:  
+    - **DPR < 0.8** → ⚠ Possible disparate impact (bias).  
+    - **DPR ≥ 0.8** → ✅ Fairness acceptable.  
+
+---
+
+### 5. **Final Evaluation**
+- Retrain model on the **entire training set**.  
+- Evaluate on **held-out test set**:  
+  - Accuracy, F1 Score, Classification Report.  
+  - Fairness across protected groups.  
 ## Modelling on Biased Dataset
 
 ## Cross-Validation Classification Report
@@ -223,18 +272,26 @@ This metric ensures that the model is not only fair in identifying positive case
 
 ---
 
-### Results
-# Model Fairness & Performance (Fold 1)
+## Now lets mitigate bias
+* Drop the features introducing bias directly or indirectly
+* Reweighting minority classes
+
+**Correlation Matrix**
+![Model Architecture](../Assets/matrix.png)
+
+
+### Model Fairness & Performce
+
 
 ## 🎯 Overall Metrics
-- **Accuracy**: 0.69  
-- **Precision**: 0.68  
-- **Recall**: 0.67  
-- **F1 Score**: 0.67  
+- **Accuracy**: 0.86 
+- **Precision**: 0 
+- **Recall**: 0
+- **F1 Score**: 0
 
 ---
 
-## ⚖️ Statistical Parity by Feature
+## Statistical Parity by Feature
 
 | Feature                       | Demographic Parity Ratio |
 |-------------------------------|--------------------------|
@@ -264,8 +321,8 @@ See the tradeoff between fairness and accuracy, recall, f1
 
 ## Authors
 #### Mohd Nasar Siddiqui
-contributinn 50%, designing model architecture, feature engineering
+contributinn 50%, designing model architecture, evaluating fairness
 
 #### Kartk
-contribution 50%, estimating bias and evaluating fairness
+contribution 50%, estimating bias and feature engineering
 
