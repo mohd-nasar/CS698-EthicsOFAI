@@ -202,8 +202,8 @@ This metric ensures that the model is not only fair in identifying positive case
   - Group-wise Accuracy  
   - Group-wise F1 Score  
   - **Demographic Parity Ratio (DPR)**:  
-    - **DPR < 0.8** → ⚠ Possible disparate impact (bias).  
-    - **DPR ≥ 0.8** → ✅ Fairness acceptable.  
+    - **DPR < 0.8** →  Possible disparate impact (bias).  
+    - **DPR ≥ 0.8** → Fairness acceptable.  
 
 ---
 
@@ -283,11 +283,11 @@ This metric ensures that the model is not only fair in identifying positive case
 ### Model Fairness & Performce
 
 
-## 🎯 Overall Metrics
-- **Accuracy**: 0.86 
-- **Precision**: 0 
-- **Recall**: 0
-- **F1 Score**: 0
+## Overall Metrics
+- **Accuracy**: 0.8636 
+- **Precision**: 0.86
+- **Recall**: 0.85
+- **F1 Score**: 0.8624
 
 ---
 
